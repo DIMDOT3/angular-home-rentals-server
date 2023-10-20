@@ -1,12 +1,21 @@
-<section class="listing">
+<section
+  class="listing"
+  [attr.data-testid]="'housing-location-' + housingLocation.name"
+>
   <img
     class="listing-photo"
     [src]="housingLocation.photo"
     alt="Exterior photo of {{ housingLocation.name }}"
   />
-  <h2 class="listing-heading">{{ housingLocation.name }}</h2>
-  <p class="listing-location">
+  <h2 class="listing-heading" data-testid="housing-location-name">
+    {{ housingLocation.name }}
+  </h2>
+  <p class="listing-location" data-testid="housing-location-location">
     {{ housingLocation.city }}, {{ housingLocation.state }}
   </p>
-  <a [routerLink]="['/details', housingLocation.id]">Learn More</a>
+  <a
+    [attr.data-testid]="'housing-location-learn-more-' + housingLocation.name"
+    [routerLink]="['/details', housingLocation.id]"
+    >Learn More</a
+  >
 </section>
