@@ -8,9 +8,6 @@ router.get('/', (req: Request, res: Response) => {
 });
 
 router.get('/:id', (req: Request, res: Response) => {
-  //   const location = locations.filter(
-  //     (location) => location.id === Number(req.params['id']),
-  //   );
   const home = homesService.getHome(req.params['id']);
   res.json(home);
 });
