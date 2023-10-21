@@ -3,7 +3,6 @@ import cors from 'cors';
 import homes from './routes/homes';
 
 const app = express();
-const port = 3200;
 
 app.use(cors());
 app.use(express.json());
@@ -32,6 +31,4 @@ app.get('/', (req: Request, res: Response) => {
 //   res.sendStatus(202);
 // });
 
-app.listen(port, () => {
-  console.log(`Example app listening on port ${port}`);
-});
+export default app;

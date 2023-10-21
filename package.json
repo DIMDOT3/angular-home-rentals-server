@@ -11,8 +11,8 @@
     "test": "ng test",
     "e2e": "ng e2e",
     "start:json-server": "npx json-server -p 3000 --watch db.json",
-    "start-server": "npx tsx backend-server/src/app.ts",
-    "start-server:dev": "npx tsx watch backend-server/src/app.ts"
+    "start-server": "npx tsx backend-server/src/server.ts",
+    "start-server:dev": "npx tsx watch backend-server/src/server.ts"
   },
   "private": true,
   "dependencies": {
