@@ -10,7 +10,9 @@
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "e2e": "ng e2e",
-    "start:json-server": "npx json-server -p 3000 --watch db.json"
+    "start:json-server": "npx json-server -p 3000 --watch db.json",
+    "start-server": "npx tsx backend-server/src/server.ts",
+    "start-server:dev": "npx tsx watch backend-server/src/server.ts"
   },
   "private": true,
   "dependencies": {
@@ -23,8 +25,11 @@
     "@angular/platform-browser-dynamic": "^16.2.12",
     "@angular/router": "^16.2.12",
     "angular-in-memory-web-api": "~0.16.0",
+    "cors": "^2.8.5",
+    "express": "^4.18.2",
     "json-server": "^0.17.4",
     "rxjs": "~7.8.1",
+    "simpl.db": "^2.12.1",
     "tslib": "^2.6.2",
     "zone.js": "~0.14.2"
   },
@@ -44,9 +49,10 @@
     "karma-coverage": "~2.2.1",
     "karma-jasmine": "~5.1.0",
     "karma-jasmine-html-reporter": "~2.1.0",
+    "nodemon": "^3.0.1",
     "prettier": "3.0.3",
     "protractor": "~7.0.0",
-    "ts-node": "~10.9.1",
-    "typescript": "~5.2.2"
+    "tsx": "^3.14.0",
+    "typescript": "~4.9.3"
   }
 }

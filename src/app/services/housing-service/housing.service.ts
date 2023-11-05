@@ -5,7 +5,7 @@ import { HousingLocation } from 'src/app/housing-location/housing-location.inter
   providedIn: 'root',
 })
 export class HousingService {
-  url = 'http://localhost:3000/locations';
+  url = 'http://localhost:3200/homes';
   constructor() {}
 
   async getAllHousingLocations(): Promise<HousingLocation[]> {
