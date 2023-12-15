@@ -8,7 +8,7 @@ npm install
 
 ## Starting the app
 
-Start the server in one terminal tab. The server is accessible at http://localhost:3000.
+Start the server in one terminal tab. The server is accessible at http://localhost:3200.
 
 ```
 npm run start-server
