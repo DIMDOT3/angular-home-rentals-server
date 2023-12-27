@@ -13,6 +13,7 @@ const db = new Database({
 });
 
 export const Homes = db.createCollection<HousingLocation>('homes');
+export const MyHomes = db.createCollection<HousingLocation>('my-homes');
 
 homesSeed.forEach((home) => {
   Homes.create(home);

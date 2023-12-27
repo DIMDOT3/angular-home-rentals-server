@@ -7,16 +7,23 @@ router.get('/', (req: Request, res: Response) => {
   res.json(homes);
 });
 
-router.get('/:id', (req: Request, res: Response, next: NextFunction) => {
-  const err = new Error('Not found');
-  err.message = { message: `Home with id: ${req.params['id']} does not exist` };
-  return next(err);
-  const home = homesService.getHome(req.params['id']);
-  res.json(home);
+router.get('/mine', (req: Request, res: Response) => {
+  const myHomes = homesService.getMyHomes();
+  res.send(myHomes)
 });
 
-router.get('/mine', (req: Request, res: Response) => {
-  res.send('mine');
+router.post('/mine', (req: Request, res: Response) => {
+  console.log(req.body)
+  homesService.addToMyHomes(req.body);
+});
+
+router.get('/:id', (req: Request, res: Response, next: NextFunction) => {
+  const home = homesService.getHome(req.params['id']);
+  console.log(home)
+  if(!home) {
+    res.status(404).send({ message: `Home with id: ${req.params['id']} does not exist.` });
+  }
+  res.status(200).json(home);
 });
 
 export default router;
