@@ -12,6 +12,14 @@ class HomesService {
     const home = homesRepository.getHome(id);
     return home;
   }
+
+  getMyHomes() {
+    return homesRepository.getMyHomes();
+  }
+
+  addToMyHomes(home: HousingLocation) {
+    homesRepository.addToMyHomes(home);
+  }
 }
 
 export default new HomesService();

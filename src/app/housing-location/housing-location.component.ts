@@ -1,7 +1,8 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterLink, RouterOutlet } from '@angular/router';
 import { HousingLocation } from './housing-location.interface';
+import { HousingService } from '../services/housing-service/housing.service';
 
 @Component({
   selector: 'app-housing-location',
@@ -12,4 +13,9 @@ import { HousingLocation } from './housing-location.interface';
 })
 export class HousingLocationComponent {
   @Input() housingLocation!: HousingLocation;
+  housingService = inject(HousingService);
+
+  addToMyHomes(home: HousingLocation) {
+    this.housingService.addToMyHomesList(home);
+  }
 }
