@@ -24,9 +24,9 @@ export class DetailsComponent {
   });
 
   constructor() {
-    const housingLocationId = parseInt(this.route.snapshot.params['id'], 10);
+    // const housingLocationId = parseInt(this.route.snapshot.params['_id'], 10);
     this.housingService
-      .getHousingLocationById(housingLocationId)
+      .getHousingLocationById(this.route.snapshot.params['id'])
       .then((housingLocation) => {
         this.housingLocation = housingLocation;
       });

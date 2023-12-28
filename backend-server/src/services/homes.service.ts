@@ -3,22 +3,23 @@ import { HousingLocation } from '../../../src/app/housing-location/housing-locat
 import homesRepository from '../repository/homes.repository';
 
 class HomesService {
-  getAllHomes() {
-    return homesRepository.getHomes();
+  async getAllHomes() {
+    const homes = await homesRepository.getHomes();
+    return homes;
   }
 
-  getHome(homeId: string) {
-    const id = Number(homeId);
-    const home = homesRepository.getHome(id);
+  async getHome(homeId: string) {
+    const home = await homesRepository.getHome(homeId);
     return home;
   }
 
-  getMyHomes() {
-    return homesRepository.getMyHomes();
+  async getMyHomes() {
+    const myHomes = homesRepository.getMyHomes();
+    return myHomes
   }
 
-  addToMyHomes(home: HousingLocation) {
-    homesRepository.addToMyHomes(home);
+  async addToMyHomes(home: HousingLocation) {
+    await homesRepository.addToMyHomes(home);
   }
 }
 
