@@ -1,3 +1,5 @@
+import 'dotenv/config';
+import mongoose from 'mongoose';
 import { Database } from 'simpl.db';
 import app from './app';
 import homesSeed from './data/homes-seed.json';
@@ -6,20 +8,31 @@ import { HousingLocation } from 'src/app/housing-location/housing-location.inter
 const port = process.env['PORT'] || 3200;
 export const mainDir = __dirname;
 
-const db = new Database({
-  autoSave: true,
-  dataFile: `${mainDir}/data/db/database.json`,
-  collectionsFolder: `${mainDir}/data/db`,
-});
+const dbConnection = process.env['MONGO_DB'] || 'localhost:3000'
 
-export const Homes = db.createCollection<HousingLocation>('homes');
-export const MyHomes = db.createCollection<HousingLocation>('my-homes');
 
-homesSeed.forEach((home) => {
-  Homes.create(home);
-});
+// const db = new Database({
+//   autoSave: true,
+//   dataFile: `${mainDir}/data/db/database.json`,
+//   collectionsFolder: `${mainDir}/data/db`,
+// });
 
-app.listen(port, () => {
-  console.log(`Homes API listening on port ${port}`);
-  console.log(mainDir);
-});
+// export const Homes = db.createCollection<HousingLocation>('homes');
+// export const MyHomes = db.createCollection<HousingLocation>('my-homes');
+
+// homesSeed.forEach((home) => {
+//   Homes.create(home);
+// });
+
+
+const start = async () => {
+  try {
+    await mongoose.connect(dbConnection);
+    app.listen(port, () => console.log(`Server started on port ${port}`));
+  } catch (error) {
+    console.error(error);
+    process.exit(1);
+  }
+};
+
+start();

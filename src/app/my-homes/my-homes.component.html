@@ -1,26 +1,71 @@
-<p>my-homes works!</p>
-
-<section class="results">
-    <app-housing-location
-        *ngFor="let myHome of myHomesList"
-        [housingLocation]="myHome"
-    ></app-housing-location>
-</section>
-
-<!-- <p-table [columns]="cols" [value]="myHomesList" [tableStyle]="{ 'min-width': '50rem' }">
-    <ng-template pTemplate="header" let-columns>
+<div *ngIf="myHomesList.length === 0">There are currently no saved listings.</div>
+<table *ngIf="myHomesList.length > 0" class="table">
+    <thead>
         <tr>
-            <th *ngFor="let col of columns">
-                {{ col.header }}
-            </th>
+            <th>List</th>
+            <th>City</th>
+            <th>State</th>
+            <th>Available Units</th>
+            <th>Applied</th>
+            <th></th>
         </tr>
-    </ng-template>
-    <ng-template pTemplate="body" let-rowData let-columns="columns">
-        <tr>
-            <td *ngFor="let col of columns">
-                {{ rowData[col.field] }}
-            </td>
-            <td><i class="pi pi-trash"></i></td>
-        </tr>
-    </ng-template>
-</p-table> -->
+    </thead>
+    <tbody>
+        <ng-template ngFor let-myHome [ngForOf]="myHomesList" let-i="index">
+            <tr>
+                <td>{{ myHome.name }}</td>
+                <td>{{ myHome.city }}</td>
+                <td>{{ myHome.state }}</td>
+                <td>{{ myHome.availableUnits }}</td>
+                <!-- <td>{{ myHome.applicationSubmitted }}</td> -->
+                <td>
+                    <div *ngIf="myHome.applicationSubmitted; then thenBlock else elseBlock"></div>
+                    <ng-template #thenBlock>true</ng-template>
+                    <ng-template #elseBlock>false</ng-template>
+                </td>
+                <td>
+                    <!-- Button trigger modal -->
+                    <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                        Delete
+                    </button>
+                    <i class="bi bi-trash-fill" data-bs-toggle="modal" data-bs-target="#exampleModal"></i>
+        
+        
+                    <!-- Modal -->
+                    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                            <div class="modal-header">
+                                <h1 class="modal-title fs-5" id="exampleModalLabel">Remove Listing</h1>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                Are you sure you want to remove {{ myHome.name }} from your list?
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                <button type="button" class="btn btn-danger" data-bs-dismiss="modal" (click)="onDelete(myHome._id)">Delete</button>
+                            </div>
+                            </div>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+        </ng-template>
+    </tbody>
+</table>
+<button type="button" class="btn btn-primary" id="liveToastBtn">Show live toast</button>
+
+<div class="toast-container position-fixed bottom-0 end-0 p-3">
+  <div id="liveToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+    <div class="toast-header">
+      <img src="..." class="rounded me-2" alt="...">
+      <strong class="me-auto">Bootstrap</strong>
+      <small>11 mins ago</small>
+      <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+    </div>
+    <div class="toast-body">
+      Hello, world! This is a toast message.
+    </div>
+  </div>
+</div>

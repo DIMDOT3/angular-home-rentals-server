@@ -15,7 +15,7 @@
   </p>
   <a
     [attr.data-testid]="'housing-location-learn-more-' + housingLocation.name"
-    [routerLink]="['/details', housingLocation.id]"
+    [routerLink]="['/details', housingLocation['_id']]"
     >Learn More</a
   >
   <button class="primary" (click)="addToMyHomes(housingLocation)">Add to My List</button>
