@@ -1,30 +1,5 @@
 <main>
-  <nav class="nav">
-    <a [routerLink]="['/']" data-testid="take-me-home-nav" class="nav-link active" aria-current="page" href="#">
-      <header class="brand-name">
-        <img
-          class="brand-logo"
-          src="/assets/logo.svg"
-          alt="logo"
-          aria-hidden="true"
-        />
-      </header>
-    </a>
-    <a [routerLink]="['/my-homes']" data-testid="my-homes-nav" class="nav-link" href="#">My Homes</a>
-  </nav>
-  <!-- <a [routerLink]="['/']" data-testid="take-me-home">
-    <header class="brand-name">
-      <img
-        class="brand-logo"
-        src="/assets/logo.svg"
-        alt="logo"
-        aria-hidden="true"
-      />
-    </header>
-  </a>
-  <a [routerLink]="['/my-homes']">
-    My Homes
-  </a> -->
+  <app-navbar></app-navbar>
   <section class="content">
     <router-outlet></router-outlet>
   </section>

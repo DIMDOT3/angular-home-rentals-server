@@ -30,6 +30,12 @@ export class HousingService {
     });
   }
 
+  async deleteFromMyHomesList(homeId: string) {
+    const response = await fetch(`${this.url}/homes/mine/${homeId}`, {
+      method: 'DELETE',
+    });
+  }
+
   async getMyHomes() {
     const data = await fetch(`${this.url}/homes/mine`);
     return (await data.json()) ?? {};
