@@ -17,14 +17,18 @@ export class MyHomesComponent {
   housingService: HousingService = inject(HousingService);
 
   constructor() {
+    this.getMyHomes();
+  }
+  async onDelete(homeId: string) {
+    await this.housingService.deleteFromMyHomesList(homeId);
+    this.getMyHomes();
+  }
+
+  private getMyHomes() {
     this.housingService
       .getMyHomes()
       .then((myHomesList: HousingLocation[]) => {
         this.myHomesList = myHomesList;
       });
   }
-  onDelete(homeId: string) {
-    console.log('deleting!')
-    console.log(homeId);
-}
 }

@@ -99,6 +99,7 @@ import { ProgressSpinnerModule } from 'primeng/progressspinner';
 import { RippleModule } from 'primeng/ripple';
 import { StyleClassModule } from 'primeng/styleclass';
 import { MessageService } from 'primeng/api';
+import { NavbarComponent } from './navbar/navbar.component';
 
 
 @NgModule({
@@ -201,7 +202,7 @@ import { MessageService } from 'primeng/api';
         RippleModule,
         StyleClassModule,
     ],
-    declarations: [ AppComponent ],
+    declarations: [ AppComponent, NavbarComponent ],
     bootstrap: [ AppComponent ],
     providers: [  ]
 })
