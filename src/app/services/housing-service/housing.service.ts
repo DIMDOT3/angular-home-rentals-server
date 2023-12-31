@@ -34,6 +34,7 @@ export class HousingService {
     const response = await fetch(`${this.url}/homes/mine/${homeId}`, {
       method: 'DELETE',
     });
+    return response.status;
   }
 
   async getMyHomes() {

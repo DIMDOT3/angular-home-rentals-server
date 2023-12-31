@@ -100,6 +100,7 @@ import { RippleModule } from 'primeng/ripple';
 import { StyleClassModule } from 'primeng/styleclass';
 import { MessageService } from 'primeng/api';
 import { NavbarComponent } from './navbar/navbar.component';
+import { ToastMessageComponent } from './toast-message/toast-message.component';
 
 
 @NgModule({
@@ -202,7 +203,7 @@ import { NavbarComponent } from './navbar/navbar.component';
         RippleModule,
         StyleClassModule,
     ],
-    declarations: [ AppComponent, NavbarComponent ],
+    declarations: [ AppComponent, NavbarComponent, ToastMessageComponent ],
     bootstrap: [ AppComponent ],
     providers: [  ]
 })
