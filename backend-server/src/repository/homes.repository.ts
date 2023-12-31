@@ -11,7 +11,7 @@ class HomesRepository {
       const homes = await Home.find();
       return homes;
     } catch(error) {
-      throw error;
+      console.log(error);
     }
   }
 
@@ -20,7 +20,7 @@ class HomesRepository {
       const home = await Home.findOne({_id: id});
       return home;
     } catch(error) {
-      throw error;
+      console.log(error);
     }
   }
 
@@ -29,16 +29,25 @@ class HomesRepository {
       const myHomes = MyHome.find()
       return myHomes;
     } catch(error) {
-      throw error;
+      console.log(error);
     }
   }
 
   async addToMyHomes(home: HousingLocation) {
     try {
       const addHome = new MyHome(home);
-      await addHome.save()
+      await addHome.save();
     } catch(error) {
-      throw error;
+      console.log(error);
+    }
+  }
+
+  async deleteMyHome(homeId: string) {
+    try {
+      const result = await MyHome.findByIdAndDelete(homeId);
+      return result;
+    } catch(error: any) {
+      console.log(error.message);
     }
   }
 }

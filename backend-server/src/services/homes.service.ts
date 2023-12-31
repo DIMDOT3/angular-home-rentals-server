@@ -21,6 +21,10 @@ class HomesService {
   async addToMyHomes(home: HousingLocation) {
     await homesRepository.addToMyHomes(home);
   }
+
+  async deleteMyHome(homeId: string) {
+    return await homesRepository.deleteMyHome(homeId);
+  }
 }
 
 export default new HomesService();
