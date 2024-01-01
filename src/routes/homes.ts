@@ -13,13 +13,17 @@ router.get('/', async (req: Request, res: Response) => {
 router.get('/mine', async (req: Request, res: Response) => {
   const myHomes = await homesService.getMyHomes();
   if(!myHomes) {
-    res.status(404).json({ message: 'We could not find your homes.'})
+    return res.status(404).json({ message: 'We could not find your homes.'})
   }
   return res.json(myHomes);
 });
 
 router.post('/mine', async (req: Request, res: Response) => {
-  await homesService.addToMyHomes(req.body);
+  const result: any = await homesService.addToMyHomes(req.body);
+  if (!result) {
+    return res.status(404).json({ message: 'We could not find your homes.'});
+  }
+  return res.sendStatus(200);
 });
 
 router.delete('/mine/:id', async (req: Request, res: Response) => {

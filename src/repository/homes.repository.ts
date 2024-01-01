@@ -1,7 +1,3 @@
-import mongoose from 'mongoose';
-// import { Homes } from '../server';
-// import { MyHomes } from '../server'
-import { HousingLocation } from 'src/app/housing-location/housing-location.interface';
 import Home from '../models/home.model';
 import MyHome from '../models/my-home.model';
 
@@ -37,6 +33,7 @@ class HomesRepository {
     try {
       const addHome = new MyHome(home);
       await addHome.save();
+      return home;
     } catch(error) {
       console.log(error);
     }

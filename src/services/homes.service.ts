@@ -19,7 +19,8 @@ class HomesService {
   }
 
   async addToMyHomes(home: HousingLocation) {
-    await homesRepository.addToMyHomes(home);
+    delete home['_id'];
+    return await homesRepository.addToMyHomes(home);
   }
 
   async deleteMyHome(homeId: string) {
