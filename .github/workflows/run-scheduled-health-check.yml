@@ -8,8 +8,8 @@ jobs:
   run-health-check:
     runs-on: ubuntu-latest
     steps:
-      name: Curl health endpoint
-      run: |
-        response = $(curl --location --request GET "https://home-rentals-40s7.onrender.com/health")
-        echo "response from curl= $response"
+      - name: Curl health endpoint
+      - run: |
+          response = $(curl --location --request GET "https://home-rentals-40s7.onrender.com/health")
+          echo "response from curl= $response"
 
