@@ -1,4 +1,4 @@
-name: Run scheduled jobbed to keep api from sleeping.
+name: Run scheduled job to keep api from sleeping.
 on:
   schedule:
     - cron: "*/14 * * * *"
