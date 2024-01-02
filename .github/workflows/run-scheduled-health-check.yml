@@ -10,4 +10,4 @@ jobs:
     steps:
       - name: Curl health endpoint
         run: |
-          curl -s --location GET "https://home-rentals-40s7.onrender.com/health"
+          curl -s --location GET "https://home-rentals-api.onrender.com/health"
