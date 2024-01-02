@@ -2,7 +2,7 @@ name: Run scheduled jobbed to keep api from sleeping.
 on:
   schedule:
     - cron: "*/14 * * * *"
-  workflow-dipatch:
+  workflow-dispatch:
 
 jobs:
   run-health-check:
