@@ -1,7 +1,7 @@
 name: Run scheduled job to keep api from sleeping.
 on:
   schedule:
-    - cron: "*/14 * * * *"
+    - cron: "*/12 * * * *"
   workflow_dispatch:
 
 jobs:
